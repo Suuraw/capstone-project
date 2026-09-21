@@ -1,0 +1,12 @@
+Exercise 2 (Functions and Transformations)
+1.	Prepare Employee table data with Employee Name, ID ,salary, performance, Hiring date, Department ID
+Take 4 levels in performance: Below_Expectation, Meets_Expectations, Above_Expectations, Exceptional
+2.	Take the substring of date, month and year in each of a new column.
+3.	Convert date to yyyymmdd format
+4.	Make a column with Experience that calculates how long the employee has been active in the firm in years. Try to keep varied dates in the date field.
+5.	Remove leading zeros in ID
+6.	Apply cross mapping table for Departments with Department ID and Department Name. Add leading zeros in DEPARTMENT-department ID to make it upto 5 chars, but keep EMPLOYEE-Department ID without leading zeros
+7.	Add a new field with new salary based on Performance. BelowExpectation-2%, MeetsExpectation-5%, AboveExpectation-10%, Exceptional-15% increment.
+8.	Split the output files per (department, year)
+
+ETA: 2PM, 23/09/2026
