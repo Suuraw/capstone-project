@@ -1,0 +1,48 @@
+### Speaker Script
+
+“Before we go into the individual stages, this slide gives you a **high-level overview of our overall approach**.
+
+We started with **data integration**, bringing together the different HR datasets into a common source.
+
+Then, we moved to **data preparation**, where the data was cleaned and made ready for further processing.
+
+Next, we worked on **big data engineering** using tools like PySpark and Hive.
+
+We then designed the **cloud architecture** to support scalable data processing and analytics.
+
+And finally, we applied **machine learning** to build a predictive solution.
+
+This is the **roadmap of our work**. In the upcoming slides, we’ll go through each of these stages in detail.”
+
+Moving to the next slide
+
+
+
+### Speaker Script
+
+
+Slide - about data
+
+After drafting the problem statement, it was important to understand the data that we were working with. Initially, we received **9 different datasets**, which together contained around **8,995 candidate records**. Among these, we identified **HR_Hiring_details_transaction.csv** as our primary dataset because it contained the core information related to the candidates and their hiring process. The remaining datasets acted as **supporting lookup and master datasets**, providing additional information such as joining status, location, region mapping, interview dates, line of business, domicile, and postal-code . To combine all this information, we used **Candidate_Ref and other relevant keys** to establish relationships between the datasets. We specifically followed a **LEFT JOIN strategy**, as our objective was to retain every candidate record from the primary dataset, even when some supporting information was missing. This helped us avoid losing candidate records during the data integration process. After combining the relevant information, we obtained **26 features**, with **Joining Status** as our target variable, where **81.30% of candidates were marked as Joined and 18.70% as Not Joined**. This gave us a consolidated view of the candidate and hiring data, which we then used for our further analysis.
+
+
+Moving on to the next slide - queue
+
+
+
+
+
+
+#### Power Bi
+
+Now, looking at the **current hiring landscape**, we can see a few key business insights.
+
+**On the left**, we can see that around **81% of candidates have joined**, while about **19% have not joined**. This gives the business a clear view of the **joining conversion rate** and the potential gap between hiring and actual workforce availability.This also signals that our dataset is imbalanced
+
+**On the right**, we can see the **joining volume by location**. Chennai and Noida have the highest joining volumes, followed by Bangalore and Hyderabad. This can help the business in **workforce allocation and location-wise capacity planning**.
+
+**At the bottom left**, we can see that the average experience is **4.4 years for males and 3.5 years for females**.
+
+And **on the bottom right**, the average CTC hike is quite similar, at around **41% for males and 40% for females**, giving us visibility into **compensation patterns**.
+
+Overall, these insights provide a quick understanding of **joining conversion, workforce distribution, experience, and compensation**, which can support better **hiring and workforce planning decisions**
