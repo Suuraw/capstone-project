@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import pandas as pd</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>pip show pyspark</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Name: pyspark
+Version: 4.2.0
+Summary: Apache Spark Python API
+Home-page: https://github.com/apache/spark/tree/master/python
+Author: Spark Developers
+Author-email: dev@spark.apache.org
+License: Apache-2.0
+Location: /home/sujay/.local/lib/python3.12/site-packages
+Requires: py4j
+Required-by: 
+Note: you may need to restart the kernel to use updated packages.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from pyspark.sql import SparkSession</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [4]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>spark = SparkSession.builder.getOrCreate()</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 11:28:56 WARN Utils: Your hostname, sujay-IdeaPad-Flex-5-14ITL05, resolves to a loopback address: 127.0.1.1; using 192.168.0.6 instead (on interface wlp0s20f3)
+26/09/25 11:28:56 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+/home/sujay/.local/lib/python3.12/site-packages/pyspark/testing/utils.py:127: FutureWarning: PySpark does not yet fully support pandas &gt;= 3.0.0. Some features may not work correctly. It is recommended to use pandas &lt; 3.0.0 for now.
+  require_minimum_pandas_version()
+26/09/25 11:28:57 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>1.	Prepare Employee table data with Employee Name, ID ,salary, performance, Hiring date, Department ID</h3><br>- Take 4 levels in performance: Below_Expectation, Meets_Expectations, Above_Expectations, Exceptional</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>employee_df = spark.read.csv("/home/sujay/Desktop/Python Learning/employee_data.csv",header=True,inferSchema=True)
+employee_df.show(5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+--------------+-----------+-------+------------------+-----------+-------------+
+| Employee_Name|Employee_ID| Salary|       Performance|Hiring_Date|Department_ID|
++--------------+-----------+-------+------------------+-----------+-------------+
+|Krishna Sharma|   0001-D05| 683500|Meets_Expectations|25-Sep-2022|          D05|
+| Aditya Sharma|   0002-D02| 475800|Meets_Expectations|14-Jan-2023|          D02|
+|Siddharth Nair|   0003-D01| 730200|Above_Expectations|10-Oct-2021|          D01|
+| Reyansh Gupta|   0004-D07|1001400| Below_Expectation|31-Mar-2022|          D07|
+|     Sai Desai|   0005-D05|1217600|Above_Expectations|31-Mar-2021|          D05|
++--------------+-----------+-------+------------------+-----------+-------------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>employee_df.printSchema()</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">root
+ |-- Employee_Name: string (nullable = true)
+ |-- Employee_ID: string (nullable = true)
+ |-- Salary: integer (nullable = true)
+ |-- Performance: string (nullable = true)
+ |-- Hiring_Date: string (nullable = true)
+ |-- Department_ID: string (nullable = true)
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>2. Convert date to yyyymmdd format</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [57]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>
+employee_df.printSchema()
+from pyspark.sql.functions import date_format,to_date, col
+new_employee_df = employee_df.withColumn("Hiring_Date", date_format(to_date(col("Hiring_Date"),"dd-MMM-yyyy"), "yyyyMMdd"))
+new_employee_df.show(5)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">root
+ |-- Employee_Name: string (nullable = true)
+ |-- Employee_ID: string (nullable = true)
+ |-- Salary: integer (nullable = true)
+ |-- Performance: string (nullable = true)
+ |-- Hiring_Date: string (nullable = true)
+ |-- Department_ID: string (nullable = true)
+
++--------------+-----------+-------+------------------+-----------+-------------+
+| Employee_Name|Employee_ID| Salary|       Performance|Hiring_Date|Department_ID|
++--------------+-----------+-------+------------------+-----------+-------------+
+|Krishna Sharma|   0001-D05| 683500|Meets_Expectations|   20220925|          D05|
+| Aditya Sharma|   0002-D02| 475800|Meets_Expectations|   20230114|          D02|
+|Siddharth Nair|   0003-D01| 730200|Above_Expectations|   20211010|          D01|
+| Reyansh Gupta|   0004-D07|1001400| Below_Expectation|   20220331|          D07|
+|     Sai Desai|   0005-D05|1217600|Above_Expectations|   20210331|          D05|
++--------------+-----------+-------+------------------+-----------+-------------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [35]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>new_employee_df.show(5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+--------------+-----------+-------+------------------+-----------+-------------+
+| Employee_Name|Employee_ID| Salary|       Performance|Hiring_Date|Department_ID|
++--------------+-----------+-------+------------------+-----------+-------------+
+|Krishna Sharma|   0001-D05| 683500|Meets_Expectations|   20220925|          D05|
+| Aditya Sharma|   0002-D02| 475800|Meets_Expectations|   20230114|          D02|
+|Siddharth Nair|   0003-D01| 730200|Above_Expectations|   20211010|          D01|
+| Reyansh Gupta|   0004-D07|1001400| Below_Expectation|   20220331|          D07|
+|     Sai Desai|   0005-D05|1217600|Above_Expectations|   20210331|          D05|
++--------------+-----------+-------+------------------+-----------+-------------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>3. Take the substring of date, month and year in each of a new column.*</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [37]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>
+from pyspark.sql.functions import *
+new_employee_df = new_employee_df.withColumn('Day',dayofmonth(to_date(new_employee_df['Hiring_Date'],"yyyyMMdd")))  \
+    .withColumn('Month',month(to_date(new_employee_df['Hiring_Date'],"yyyyMMdd")))  \
+        .withColumn('Year',year(to_date(new_employee_df['Hiring_Date'],"yyyyMMdd")))
+
+new_employee_df.show(5)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+
+| Employee_Name|Employee_ID| Salary|       Performance|Hiring_Date|Department_ID|Day|Month|Year|
++--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+
+|Krishna Sharma|   0001-D05| 683500|Meets_Expectations|   20220925|          D05| 25|    9|2022|
+| Aditya Sharma|   0002-D02| 475800|Meets_Expectations|   20230114|          D02| 14|    1|2023|
+|Siddharth Nair|   0003-D01| 730200|Above_Expectations|   20211010|          D01| 10|   10|2021|
+| Reyansh Gupta|   0004-D07|1001400| Below_Expectation|   20220331|          D07| 31|    3|2022|
+|     Sai Desai|   0005-D05|1217600|Above_Expectations|   20210331|          D05| 31|    3|2021|
++--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>4.	Make a column with Experience that calculates how long the employee has been active in the firm in years. Try to keep varied dates in the date field.</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [39]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>new_employee_df.withColumn('Experience',round(date_diff(current_date(),to_date(new_employee_df['Hiring_Date'],"yyyyMMdd"))/365,1)).show(5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+----------+
+| Employee_Name|Employee_ID| Salary|       Performance|Hiring_Date|Department_ID|Day|Month|Year|Experience|
++--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+----------+
+|Krishna Sharma|   0001-D05| 683500|Meets_Expectations|   20220925|          D05| 25|    9|2022|       4.0|
+| Aditya Sharma|   0002-D02| 475800|Meets_Expectations|   20230114|          D02| 14|    1|2023|       3.7|
+|Siddharth Nair|   0003-D01| 730200|Above_Expectations|   20211010|          D01| 10|   10|2021|       5.0|
+| Reyansh Gupta|   0004-D07|1001400| Below_Expectation|   20220331|          D07| 31|    3|2022|       4.5|
+|     Sai Desai|   0005-D05|1217600|Above_Expectations|   20210331|          D05| 31|    3|2021|       5.5|
++--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+----------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>5 Remove leading zeros in ID</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [40]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>new_employee_df.withColumn('Employee_ID',regexp_replace(new_employee_df['Employee_ID'],"^0+","")).show(5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+
+| Employee_Name|Employee_ID| Salary|       Performance|Hiring_Date|Department_ID|Day|Month|Year|
++--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+
+|Krishna Sharma|      1-D05| 683500|Meets_Expectations|   20220925|          D05| 25|    9|2022|
+| Aditya Sharma|      2-D02| 475800|Meets_Expectations|   20230114|          D02| 14|    1|2023|
+|Siddharth Nair|      3-D01| 730200|Above_Expectations|   20211010|          D01| 10|   10|2021|
+| Reyansh Gupta|      4-D07|1001400| Below_Expectation|   20220331|          D07| 31|    3|2022|
+|     Sai Desai|      5-D05|1217600|Above_Expectations|   20210331|          D05| 31|    3|2021|
++--------------+-----------+-------+------------------+-----------+-------------+---+-----+----+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [42]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>department_df = spark.read.csv("/home/sujay/Desktop/Python Learning/department_data.csv",header=True,inferSchema=True)
+department_df.show(5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+-------------+---------------+---------+
+|Department_ID|Department_Name| Location|
++-------------+---------------+---------+
+|          D01|    Engineering|Hyderabad|
+|          D02|   Data Science|Bangalore|
+|          D03|Human Resources|Hyderabad|
+|          D04|          Sales|   Mumbai|
+|          D05|      Marketing|     Pune|
++-------------+---------------+---------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>6. Apply cross mapping table for Departments with Department ID and Department Name. Add leading zeros in DEPARTMENT-department ID to make it upto 5 chars, but keep EMPLOYEE-Department ID without leading zeros</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>new_department_df = department_df.withColumn("Department_ID",lpad(department_df["Department_ID"],5,"0"))
+new_department_df.show(5)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+-------------+---------------+---------+
+|Department_ID|Department_Name| Location|
++-------------+---------------+---------+
+|        00D01|    Engineering|Hyderabad|
+|        00D02|   Data Science|Bangalore|
+|        00D03|Human Resources|Hyderabad|
+|        00D04|          Sales|   Mumbai|
+|        00D05|      Marketing|     Pune|
++-------------+---------------+---------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>7.	Add a new field with new salary based on Performance. BelowExpectation-2%, MeetsExpectation-5%, AboveExpectation-10%, Exceptional-15% increment.</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [29]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>increment_percent_mapping={"Meets_Expectations":0.05,"Above_Expectations":0.10,"Below_Expectation":0.02,"Exceptional":0.15}
+
+new_data=[]
+for employee in employee_df.collect():
+    increment = increment_percent_mapping[employee["Performance"]]
+    new_salary = employee["Salary"] + (employee["Salary"] * increment)
+    employee_Dict = employee.asDict()
+    employee_Dict["new_salary"] = new_salary
+    new_data.append(employee_Dict)
+
+new_employee_df = spark.createDataFrame(new_data)
+new_employee_df.show(5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">[Stage 21:&gt;                                                         (0 + 1) / 1]</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">+-------------+-----------+--------------+-----------+------------------+-------+----------+
+|Department_ID|Employee_ID| Employee_Name|Hiring_Date|       Performance| Salary|new_salary|
++-------------+-----------+--------------+-----------+------------------+-------+----------+
+|          D05|   0001-D05|Krishna Sharma|25-Sep-2022|Meets_Expectations| 683500|  717675.0|
+|          D02|   0002-D02| Aditya Sharma|14-Jan-2023|Meets_Expectations| 475800|  499590.0|
+|          D01|   0003-D01|Siddharth Nair|10-Oct-2021|Above_Expectations| 730200|  803220.0|
+|          D07|   0004-D07| Reyansh Gupta|31-Mar-2022| Below_Expectation|1001400| 1021428.0|
+|          D05|   0005-D05|     Sai Desai|31-Mar-2021|Above_Expectations|1217600| 1339360.0|
++-------------+-----------+--------------+-----------+------------------+-------+----------+
+only showing top 5 rows
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">                                                                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>8.	Split the output files per (department, year)</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [56]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>unique_dy_combinations = new_employee_df.select("Department_ID","Year").distinct().collect() # df - list of row of object holding department and year
+department_year_wise_records =[] 
+# print(unique_dy_combinations)
+for unique_comb in unique_dy_combinations:
+    department = unique_comb["Department_ID"]
+    year = unique_comb["Year"]
+    employees_per_dy = new_employee_df.filter((new_employee_df["Department_ID"]==department) &amp; (new_employee_df["Year"] == year)) # filter dataframe based on the unique department and year
+    department_year_wise_records.append(employees_per_dy) # store each dataframe to a list 
+
+# now i have the list of dataframe seperated by unique (department ,year)
+for i,df in enumerate(department_year_wise_records,start=1):
+    df.coalesce(1).write.mode("overwrite").option("header",True).csv(f"/home/sujay/Desktop/Python Learning/output/df_{i}")
+</pre></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
